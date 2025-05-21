@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import AccessScreen from './components/AccessScreen'
 import HomeScreen from './components/HomeScreen'
-import TableDB from './components/TableDB'
-
+import TableDBBike from './components/TableDBBike'
+import TableDBCustomers from './components/TableDBCustomers'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <TableDB />
+      <TableDBBike />
       {/* {!loggedIn ? <AccessScreen onLoginSuccess={handleLoginSuccess} /> : <HomeScreen />} */}
     </>
   )

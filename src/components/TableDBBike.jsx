@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TableScreenListBike from "./TableScreenListBike";
 
-export default function TableDB() {
+export default function TableDBBike() {
   const [dados, setDados] = useState([]);
 
   // Aqui será a futura requisição para o SQL

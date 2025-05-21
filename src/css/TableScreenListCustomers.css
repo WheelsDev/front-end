@@ -35,6 +35,7 @@ table {
   border-spacing: 0;
 }
 
+
 tbody tr:nth-child(even) {
   background-color: #898585;
   color: white;
@@ -68,8 +69,7 @@ tbody td:last-child {
 }
 
 tbody td:first-child {
-  padding-left: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 .header {
@@ -109,8 +109,8 @@ tbody td:first-child {
 }
 
 img{
-    height: 95px;
     margin-right: 20px;
+    height: 95px;
 }
 
 .header{
