@@ -3,6 +3,8 @@ import AccessScreen from './components/AccessScreen'
 import HomeScreen from './components/HomeScreen'
 import TableDBBike from './components/TableDBBike'
 import TableDBCustomers from './components/TableDBCustomers'
+import TableDBContracts from './components/TableDBContracts'
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
 
