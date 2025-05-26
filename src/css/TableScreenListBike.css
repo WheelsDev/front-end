@@ -108,16 +108,16 @@ tbody td:first-child {
   transform: scale(1.03);
 }
 
-img{
-    height: 95px;
-    margin-right: 20px;
+img {
+  height: 95px;
+  margin-right: 20px;
 }
 
-.header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .search-container {

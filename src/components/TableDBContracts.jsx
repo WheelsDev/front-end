@@ -8,9 +8,7 @@ export default function TableDBContracts() {
   useEffect(() => {
     // Exemplo de dados simulados (substituir pela chamada SQL):
     setTimeout(() => {
-     setDados([
-
-]);
+      setDados([]);
     }, 1000);
   }, []);
 

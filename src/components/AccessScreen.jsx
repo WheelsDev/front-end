@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import '../css/AccessScreen.css'
+import "../css/AccessScreen.css";
 import imagem3 from "../assets/logobike.png";
 
 function AccessScreen({ onLoginSuccess }) {
@@ -62,7 +62,11 @@ function AccessScreen({ onLoginSuccess }) {
 
         {acesso ? (
           <div className="card-login">
-            <div className={`login-header ${loginError ? "error" : isFormValid ? "valid" : ""}`}></div>
+            <div
+              className={`login-header ${
+                loginError ? "error" : isFormValid ? "valid" : ""
+              }`}
+            ></div>
             <div className="paiContainer">
               {logoInCard && (
                 <img
@@ -73,29 +77,35 @@ function AccessScreen({ onLoginSuccess }) {
                 />
               )}
               <h3>Informe seu E-mail e senha</h3>
-              <input 
-                type="email" 
-                placeholder="E-mail" 
-                className="input" 
+              <input
+                type="email"
+                placeholder="E-mail"
+                className="input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input 
-                type="password" 
-                placeholder="Senha" 
-                className="input" 
+              <input
+                type="password"
+                placeholder="Senha"
+                className="input"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button 
-                className={`botao-login ${loginError ? "error" : isFormValid ? "valid" : ""}`}
+              <button
+                className={`botao-login ${
+                  loginError ? "error" : isFormValid ? "valid" : ""
+                }`}
                 onClick={handleLogin}
                 disabled={!isFormValid}
               >
                 Login
               </button>
             </div>
-            <div className={`login-footer ${loginError ? "error" : isFormValid ? "valid" : ""}`}></div>
+            <div
+              className={`login-footer ${
+                loginError ? "error" : isFormValid ? "valid" : ""
+              }`}
+            ></div>
           </div>
         ) : (
           <button

@@ -19,17 +19,20 @@ const TableScreenListBike = ({ dados }) => {
 
     const lowercasedSearch = searchTerm.toLowerCase();
 
-    const filtered = dados.filter(item => 
-      item.id.toString().includes(lowercasedSearch) ||
-      item.nome.toLowerCase().includes(lowercasedSearch) ||
-      item.marca.toLowerCase().includes(lowercasedSearch) ||
-      item.modelo.toLowerCase().includes(lowercasedSearch) ||
-      item.tipo.toLowerCase().includes(lowercasedSearch) ||
-      item.taxa.toLowerCase().includes(lowercasedSearch) ||
-      item.deposito.toLowerCase().includes(lowercasedSearch) ||
-      (item.disponibilidade ? "disponível" : "indisponível").includes(lowercasedSearch)
+    const filtered = dados.filter(
+      (item) =>
+        item.id.toString().includes(lowercasedSearch) ||
+        item.nome.toLowerCase().includes(lowercasedSearch) ||
+        item.marca.toLowerCase().includes(lowercasedSearch) ||
+        item.modelo.toLowerCase().includes(lowercasedSearch) ||
+        item.tipo.toLowerCase().includes(lowercasedSearch) ||
+        item.taxa.toLowerCase().includes(lowercasedSearch) ||
+        item.deposito.toLowerCase().includes(lowercasedSearch) ||
+        (item.disponibilidade ? "disponível" : "indisponível").includes(
+          lowercasedSearch
+        )
     );
-    
+
     setFilteredData(filtered);
     setIsSearchActive(true);
   };
@@ -87,7 +90,9 @@ const TableScreenListBike = ({ dados }) => {
             ) : (
               <tr>
                 <td colSpan="8" className="text-center">
-                  {isSearchActive ? "Nenhum resultado encontrado" : "Nenhum dado encontrado"}
+                  {isSearchActive
+                    ? "Nenhum resultado encontrado"
+                    : "Nenhum dado encontrado"}
                 </td>
               </tr>
             )}
@@ -95,22 +100,28 @@ const TableScreenListBike = ({ dados }) => {
         </table>
       </div>
       <div className="search-container">
-        <input 
-          type="text" 
-          id="search-input" 
-          placeholder="Buscar..." 
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Buscar..."
           value={searchTerm}
           onChange={handleSearchChange}
           onKeyPress={handleKeyPress}
         />
-        <button id="search-button" onClick={handleSearch}>Buscar</button>
+        <button id="search-button" onClick={handleSearch}>
+          Buscar
+        </button>
         {isSearchActive && (
-          <button id="clear-button" onClick={clearSearch}>Limpar</button>
+          <button id="clear-button" onClick={clearSearch}>
+            Limpar
+          </button>
         )}
       </div>
       {isSearchActive && filteredData.length > 0 && (
         <div className="search-results">
-          <p>Mostrando {filteredData.length} resultado(s) para "{searchTerm}"</p>
+          <p>
+            Mostrando {filteredData.length} resultado(s) para "{searchTerm}"
+          </p>
         </div>
       )}
     </div>

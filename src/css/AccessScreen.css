@@ -102,7 +102,6 @@
     background-color: #f87314;
   }
   100% {
-  
     width: 400px;
     height: 600px;
     border-radius: 20px;
@@ -229,7 +228,8 @@ h3 {
 }
 
 .logobike-in-card {
-  width: 50px;
+  width: 100px;
+  height: 100px;
   z-index: 2;
   background-color: transparent;
   opacity: 0;
