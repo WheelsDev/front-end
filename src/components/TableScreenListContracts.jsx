@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "../css/TableScreenListContracts.css";
 import imagem6 from "../assets/contract.png";
+import imagem10 from "../assets/lixeira.svg";
+import { Link } from "react-router-dom";
+import imagem9 from "../assets/menu.svg";
 
 const TableScreenListCustomers = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -46,6 +49,19 @@ const TableScreenListCustomers = ({ dados }) => {
   const displayData = isSearchActive ? filteredData : dados;
 
   return (
+    <div className="pai">
+         <div className="dropdown-menu-container">
+          <div className="dropdown">
+            <button className="dropbtn">
+              <img src={imagem9} alt="Menu do site" title="Menu do site" />
+            </button>
+            <div className="dropdown-content">
+              <Link to="/contratos">Lista de Contratos</Link>
+              <Link to="/bicicletas">Lista de Bicicletas</Link>
+              <Link to="/clientes">Lista de Clientes</Link>
+            </div>
+          </div>
+        </div>
     <div className="tabela-container">
       <div className="header">
         <img className="contract" src={imagem6} alt="logo" title="logo" />
@@ -107,7 +123,7 @@ const TableScreenListCustomers = ({ dados }) => {
         </button>
         {isSearchActive && (
           <button id="clear-button" onClick={clearSearch}>
-            Limpar
+            <img className="trash" src={imagem10} alt="lixeira" title="lixeira" />
           </button>
         )}
       </div>
@@ -118,6 +134,7 @@ const TableScreenListCustomers = ({ dados }) => {
           </p>
         </div>
       )}
+    </div>
     </div>
   );
 };

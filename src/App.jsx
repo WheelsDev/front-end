@@ -29,14 +29,9 @@ function App() {
         <Route
           path="/"
           element={
-            loggedIn ? (
-              <Navigate to="/home" />
-            ) : (
-              <AccessScreen onLoginSuccess={handleLoginSuccess} />
-            )
+            loggedIn ? <Navigate to="/home" /> : <AccessScreen onLoginSuccess={handleLoginSuccess} />
           }
         />
-
         <Route
           path="/home"
           element={
@@ -45,7 +40,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/novo-aluguel"
           element={
@@ -54,7 +48,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/contratos"
           element={
@@ -63,7 +56,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/bicicletas"
           element={
@@ -72,7 +64,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/clientes"
           element={
@@ -81,7 +72,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route path="*" element={<Navigate to={loggedIn ? "/home" : "/"} />} />
       </Routes>
     </Router>

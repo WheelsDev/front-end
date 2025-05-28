@@ -1,4 +1,5 @@
 import "../css/HomeScreen.css";
+import { Link } from "react-router-dom";
 import imagem2 from "../assets/logobike.png";
 import imagem1 from "../assets/chatbot.png";
 import imagem9 from "../assets/menu.svg";
@@ -17,44 +18,35 @@ function HomeScreen() {
         </div>
         <div className="textos2">
           <p>
-            Mobilidade sobre Duas Rodas com <br></br>Qualidade e Eficiência
+            Mobilidade sobre Duas Rodas com <br />Qualidade e Eficiência
           </p>
         </div>
         <div className="centralbuttons">
-          <a href="/novo-aluguel">
+          <Link to="/novo-aluguel">
             <button className="big-orange">Novo Aluguel</button>
-          </a>
+          </Link>
           <img
             className="logobike"
             src={imagem2}
             alt="logo do site de bike"
             title="logo do site de bike"
           />
-          <a href="/novo-aluguel">
+          <Link to="/novo-aluguel">
             <button className="big-bot">
-              <img
-                src={imagem1}
-                alt="logo do chatbot"
-                title="logo do chatbot"
-              />
+              <img src={imagem1} alt="logo do chatbot" title="logo do chatbot" />
             </button>
-          </a>
+          </Link>
         </div>
 
         <div className="dropdown-menu-container">
           <div className="dropdown">
             <button className="dropbtn">
-              <img
-                className=""
-                src={imagem9}
-                alt="Menu do site"
-                title="Menu do site"
-              />
+              <img src={imagem9} alt="Menu do site" title="Menu do site" />
             </button>
             <div className="dropdown-content">
-              <a href="/contratos">Lista de Contratos</a>
-              <a href="/bicicletas">Lista de Bicicletas</a>
-              <a href="/clientes">Lista de Clientes</a>
+              <Link to="/contratos">Lista de Contratos</Link>
+              <Link to="/bicicletas">Lista de Bicicletas</Link>
+              <Link to="/clientes">Lista de Clientes</Link>
             </div>
           </div>
         </div>
