@@ -2,13 +2,20 @@ import { useState } from "react";
 import "../css/TableScreenListCustomers.css";
 import imagem5 from "../assets/helmet.png";
 import imagem10 from "../assets/lixeira.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import imagem9 from "../assets/menu.svg";
+import imagem11 from "../assets/seta.svg";
 
 const TableScreenListCustomers = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+
+    const navigate = useNavigate();
+
+  const voltarPagina = () => {
+    navigate(-1);
+  };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -56,6 +63,7 @@ const TableScreenListCustomers = ({ dados }) => {
                     <img src={imagem9} alt="Menu do site" title="Menu do site" />
                   </button>
                   <div className="dropdown-content">
+                    <Link to="/home">Início</Link>
                     <Link to="/contratos">Lista de Contratos</Link>
                     <Link to="/bicicletas">Lista de Bicicletas</Link>
                     <Link to="/clientes">Lista de Clientes</Link>
@@ -64,6 +72,9 @@ const TableScreenListCustomers = ({ dados }) => {
               </div>
     <div className="tabela-container">
       <div className="header">
+            <button id="backbutton" onClick={voltarPagina}>
+                    <img src={imagem11} alt="seta" title="seta" />
+                  </button>
         <img className="helmet" src={imagem5} alt="logo" title="logo" />
         <h1>Lista de Clientes</h1>
         <button>Adicionar Cliente</button>
