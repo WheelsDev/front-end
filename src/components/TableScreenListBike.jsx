@@ -31,12 +31,12 @@ const TableScreenListBike = ({ dados }) => {
 
     const filtered = dados.filter(
       (item) =>
-        item.id.toString().includes(lowercasedSearch) ||
+        item.numero.toString().includes(lowercasedSearch) ||
         item.nome.toLowerCase().includes(lowercasedSearch) ||
         item.marca.toLowerCase().includes(lowercasedSearch) ||
         item.modelo.toLowerCase().includes(lowercasedSearch) ||
         item.tipo.toLowerCase().includes(lowercasedSearch) ||
-        item.taxa.toLowerCase().includes(lowercasedSearch) ||
+        item.diariaTaxaAluguel.toLowerCase().includes(lowercasedSearch) ||
         item.deposito.toLowerCase().includes(lowercasedSearch) ||
         (item.disponibilidade ? "disponível" : "indisponível").includes(
           lowercasedSearch
@@ -59,9 +59,11 @@ const TableScreenListBike = ({ dados }) => {
   };
 
   const displayData = isSearchActive ? filteredData : dados;
+  
+  const MIN_ROWS = 20;
 
   return (
-    <div className="pai">               
+    <div className="pai">
       <div className="dropdown-menu-container">
         <div className="dropdown">
           <button className="dropbtn">
@@ -103,15 +105,16 @@ const TableScreenListBike = ({ dados }) => {
               </tr>
             </thead>
             <tbody>
+              {/* Renderiza os dados filtrados ou todos os dados */}
               {displayData && displayData.length > 0 ? (
                 displayData.map((item) => (
                   <tr key={item.id}>
-                    <td>{item.id}</td>
+                    <td>{item.numero}</td>
                     <td>{item.nome}</td>
                     <td>{item.marca}</td>
                     <td>{item.modelo}</td>
                     <td>{item.tipo}</td>
-                    <td>{item.taxa}</td>
+                    <td>{item.diariaTaxaAluguel}</td>
                     <td>{item.deposito}</td>
                     <td>
                       {item.disponibilidade ? "Disponível" : "Indisponível"}
@@ -119,14 +122,32 @@ const TableScreenListBike = ({ dados }) => {
                   </tr>
                 ))
               ) : (
-                <tr>
-                  <td colSpan="8" className="text-center">
-                    {isSearchActive
-                      ? "Nenhum resultado encontrado"
-                      : "Nenhum dado encontrado"}
-                  </td>
-                </tr>
+                // Se a busca estiver ativa e não houver resultados
+                isSearchActive && (
+                  <tr>
+                    <td colSpan="8" className="text-center">
+                      Nenhum resultado encontrado
+                    </td>
+                  </tr>
+                )
               )}
+
+              {/* Renderiza linhas vazias para completar até o MIN_ROWS */}
+              {!isSearchActive && Array.from({ 
+                length: Math.max(0, MIN_ROWS - (dados ? dados.length : 0)) 
+              }).map((_, index) => (
+                <tr key={`empty-${index}`}>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -31,7 +31,6 @@ const TableScreenListCustomers = ({ dados }) => {
 
     const filtered = dados.filter(
       (item) =>
-        item.id.toString().includes(lowercasedSearch) ||
         item.nome.toLowerCase().includes(lowercasedSearch) ||
         item.endereço.toLowerCase().includes(lowercasedSearch) ||
         item.telefone.toLowerCase().includes(lowercasedSearch) ||
@@ -83,7 +82,6 @@ const TableScreenListCustomers = ({ dados }) => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nome</th>
               <th>Endereço</th>
               <th>Telefone</th>
@@ -94,7 +92,6 @@ const TableScreenListCustomers = ({ dados }) => {
             {displayData && displayData.length > 0 ? (
               displayData.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
                   <td>{item.nome}</td>
                   <td>{item.endereco}</td>
                   <td>{item.telefone}</td>
