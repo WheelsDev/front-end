@@ -5,16 +5,20 @@ import imagem10 from "../assets/lixeira.svg";
 import { Link, useNavigate } from "react-router-dom";
 import imagem9 from "../assets/menu.svg";
 import imagem11 from "../assets/seta.svg";
+import openArrowIcon from "../assets/openarrow.svg";
 
 const TableScreenListBike = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBikeType, setSelectedBikeType] = useState("");
 
   const navigate = useNavigate();
 
   const voltarPagina = () => {
     navigate(-1);
+    setIsSearchActive(false);
   };
 
   const handleSearchChange = (e) => {
@@ -62,6 +66,18 @@ const TableScreenListBike = ({ dados }) => {
   
   const MIN_ROWS = 20;
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleBikeTypeChange = (e) => {
+    setSelectedBikeType(e.target.value);
+  };
+
   return (
     <div className="pai">
       <div className="dropdown-menu-container">
@@ -83,10 +99,10 @@ const TableScreenListBike = ({ dados }) => {
           <button id="backbutton" onClick={voltarPagina}>
             <img src={imagem11} alt="seta" title="seta" />
           </button>
-          <img className="logobike" src={imagem4} alt="logo" title="logo" />
+          <img className="logobike2" src={imagem4} alt="logo" title="logo" />
           <h1>Lista de Bicicletas</h1>
           <div className="botoes-header">
-            <button>Adicionar Bicicleta</button>
+            <button onClick={openModal}>Adicionar Bicicleta</button>
           </div>
         </div>
 
@@ -105,7 +121,6 @@ const TableScreenListBike = ({ dados }) => {
               </tr>
             </thead>
             <tbody>
-              {/* Renderiza os dados filtrados ou todos os dados */}
               {displayData && displayData.length > 0 ? (
                 displayData.map((item) => (
                   <tr key={item.id}>
@@ -122,7 +137,7 @@ const TableScreenListBike = ({ dados }) => {
                   </tr>
                 ))
               ) : (
-                // Se a busca estiver ativa e não houver resultados
+                
                 isSearchActive && (
                   <tr>
                     <td colSpan="8" className="text-center">
@@ -132,7 +147,7 @@ const TableScreenListBike = ({ dados }) => {
                 )
               )}
 
-              {/* Renderiza linhas vazias para completar até o MIN_ROWS */}
+       
               {!isSearchActive && Array.from({ 
                 length: Math.max(0, MIN_ROWS - (dados ? dados.length : 0)) 
               }).map((_, index) => (
@@ -184,6 +199,34 @@ const TableScreenListBike = ({ dados }) => {
           </div>
         )}
       </div>
+
+      {isModalOpen && (
+        <div className="overlay">
+          <div className="modal">
+            <div className="modal-button">
+            <button className="close-button" onClick={closeModal}>
+              X
+            </button>
+            </div>
+            <img src={imagem4} alt="logo" title="logo" />
+            <input type="text" placeholder="Nome da Bicicleta" />
+            <input type="text" placeholder="Marca da Bicicleta" />
+            <input type="text" placeholder="Modelo da Bicicleta" />
+            <select value={selectedBikeType} onChange={handleBikeTypeChange} className="modal-select">
+              <option value="" disabled>Selecione o tipo da Bicicleta</option>
+              <option value="Urbana">Urbana</option>
+              <option value="Estrada">Estrada</option>  
+              <option value="Mountain Bike">Mountain Bike</option>
+              <option value="BMX">BMX</option>
+              <option value="Elétrica">Elétrica</option>
+              <option value="Esportiva">Esportiva</option>
+            </select>
+            <input type="text" placeholder="Valor da Taxa R$" />
+            <input type="text" placeholder="Valor do Depósito R$" />
+            <button className="register-button">Registrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
