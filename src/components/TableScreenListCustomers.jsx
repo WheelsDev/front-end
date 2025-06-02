@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/TableScreenListCustomers.css";
 import imagem5 from "../assets/helmet.png";
 import imagem10 from "../assets/lixeira.svg";
 import { Link, useNavigate } from "react-router-dom";
 import imagem9 from "../assets/menu.svg";
 import imagem11 from "../assets/seta.svg";
+import imagem4 from "../assets/logobike.png";
 
 const TableScreenListCustomers = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const voltarPagina = () => {
     navigate(-1);
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleSearchChange = (e) => {
@@ -76,7 +83,7 @@ const TableScreenListCustomers = ({ dados }) => {
                   </button>
         <img className="helmet" src={imagem5} alt="logo" title="logo" />
         <h1>Lista de Clientes</h1>
-        <button>Adicionar Cliente</button>
+        <button onClick={openModal}>Adicionar Cliente</button>
       </div>
       <div className="table-wrapper">
         <table>
@@ -136,6 +143,66 @@ const TableScreenListCustomers = ({ dados }) => {
         </div>
       )}
     </div>
+
+    {isModalOpen && (
+      <div className="overlay-customers">
+        <div className="modal-customers">
+          <div className="modal-header-customers">
+            <img src={imagem4} alt="Wheels Bike Logo" className="modal-logo-customers" />
+            <button className="close-button-customers" onClick={closeModal}>X</button>
+          </div>
+          <div className="modal-content-customers">
+            <div className="form-row-customers">
+              <input 
+                type="text" 
+                placeholder="Nome" 
+                className="input-nome-customers" 
+              />
+              <input 
+                type="text" 
+                placeholder="Telefone" 
+                className="input-telefone-customers" 
+              />
+            </div>
+            <div className="form-row-customers">
+              <input 
+                type="text" 
+                placeholder="Rua" 
+                className="input-rua-customers" 
+              />
+              <input 
+                type="text" 
+                placeholder="N°" 
+                className="input-numero-casa-customers" 
+              />
+              <input 
+                type="text" 
+                placeholder="CEP" 
+                className="input-cep-customers" 
+              />
+            </div>
+            <div className="form-row-customers">
+              <input 
+                type="text" 
+                placeholder="Cidade" 
+                className="input-cidade-customers" 
+              />
+              <input 
+                type="text" 
+                placeholder="Estado" 
+                className="input-estado-customers" 
+              />
+            </div>
+            <input 
+              type="email" 
+              placeholder="Email" 
+              className="input-email-full-customers" 
+            />
+          </div>
+          <button className="register-button-customers">Registrar</button>
+        </div>
+      </div>
+    )}
     </div>
   );
 };
