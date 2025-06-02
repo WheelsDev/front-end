@@ -3,13 +3,13 @@ import "../css/TableScreenListContracts.css";
 import imagem6 from "../assets/contract.png";
 import imagem10 from "../assets/lixeira.svg";
 import { Link, useNavigate } from "react-router-dom";
-import imagem9 from "../assets/menu.svg";
-import imagem11 from "../assets/seta.svg";
+import imagem11 from "../assets/seta.png";
 
 const TableScreenListCustomers = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const MIN_ROWS = 20;
 
     const navigate = useNavigate();
 
@@ -57,19 +57,20 @@ const TableScreenListCustomers = ({ dados }) => {
 
   return (
     <div className="pai">
-         <div className="dropdown-menu-container">
-          <div className="dropdown">
-            <button className="dropbtn">
-              <img src={imagem9} alt="Menu do site" title="Menu do site" />
-            </button>
-            <div className="dropdown-content">
-              <Link to="/home">Início</Link>
-              <Link to="/contratos">Lista de Contratos</Link>
-              <Link to="/bicicletas">Lista de Bicicletas</Link>
-              <Link to="/clientes">Lista de Clientes</Link>
-            </div>
+      <div class="dropdown-menu-container">
+        <div class="dropdown">
+          <div class="dropbtn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
           </div>
+        <div className="dropdown-content">
+            <Link to="/home">Início</Link>
+            <Link to="/bicicletas">Lista de Bicicletas</Link>
+            <Link to="/clientes">Lista de Clientes</Link>
         </div>
+      </div>
+    </div>
     <div className="tabela-container">
       <div className="header">
             <button id="backbutton" onClick={voltarPagina}>
@@ -110,13 +111,29 @@ const TableScreenListCustomers = ({ dados }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="text-center">
+                <td colSpan="9" className="text-center">
                   {isSearchActive
                     ? "Nenhum resultado encontrado"
                     : "Nenhum dado encontrado"}
                 </td>
               </tr>
             )}
+            {!isSearchActive &&
+              Array.from({
+                length: Math.max(0, MIN_ROWS - (dados ? dados.length : 0)),
+              }).map((_, index) => (
+                <tr key={`empty-${index}`}>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -10,6 +10,7 @@ import HomeScreen from "./components/HomeScreen";
 import TableDBBike from "./components/TableDBBike";
 import TableDBCustomers from "./components/TableDBCustomers";
 import TableDBContracts from "./components/TableDBContracts";
+import NewRegister from "./components/NewRegister";
 
 function ProtectedRoute({ children, loggedIn }) {
   return loggedIn ? children : <Navigate to="/" />;
@@ -44,7 +45,7 @@ function App() {
           path="/novo-aluguel"
           element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <div>Página de Novo Aluguel (em desenvolvimento)</div>
+              <NewRegister />
             </ProtectedRoute>
           }
         />

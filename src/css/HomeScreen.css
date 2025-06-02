@@ -1,114 +1,293 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+@font-face {
+  font-family: OswaldSemi;
+  src: url(../fonts/Oswald-SemiBold.ttf);
 }
 
-#homescreenpage {
-  background-color: black;
+@font-face {
+  font-family: KrubBold;
+  src: url(../fonts/Krub-Bold.ttf);
+}
+
+@font-face {
+  font-family: KrubLight;
+  src: url(../fonts/Krub-Light.ttf);
+}
+
+@font-face {
+  font-family: KrubSemiBold;
+  src: url(../fonts/Krub-SemiBold.ttf);
+}
+
+.homescreen {
+  background-size: cover;        
+  background-repeat: no-repeat; 
+  background-position: center;  
+  background-color: #0b0b0b;
+  height: 127vh;  
   width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
 }
 
-.esfera1 {
+.nav-bar {
   display: flex;
-  background-color: #191919;
-  border-radius: 50%;
-  width: 900px;
-  height: 900px;
-  position: absolute;
-  top: -300px;
-  left: -300px;
-  justify-content: center;
-  align-items: center;
-}
-
-.esfera2 {
-  width: 180px;
-  background-color: #f9812b;
-  height: 180px;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 70px;
-  margin-right: 70px;
-}
-
-.esfera3 {
-  width: 80px;
-  background-color: #191919;
-  height: 80px;
-  border-radius: 100%;
-}
-
-.textos1 {
-  display: flex;
+  gap: 100px;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 2;
-  color: white;
-  width: 45%;
-  font-size: 45px;
-  margin-left: 135px;
-  margin-top: 260px;
-  font-family: "Inter", sans-serif;
 }
 
-.textos2 {
-  display: flex;
+.nav-bar img {
   position: absolute;
-  z-index: 2;
-  color: white;
-  width: 30%;
-  font-size: 27px;
-  margin-left: 135px;
-  font-family: "Inter", sans-serif;
-  text-align: justify;
-  margin-top: 30px;
-  font-weight: bold;
+  left: 60px;
+  top: 20px;
+  width: 20vh;
+  height: 20vh;
+  
 }
 
-.centralbuttons {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 480px;
-  z-index: 3;
-
-  align-items: center;
-  width: fit-content;
-}
-
-.centralbuttons a {
+.nav-bar a {
+  color: azure;
   text-decoration: none;
+  position: relative;
+  top: 65px;
+  font-size: 2.5vh;
+  font-family: OswaldSemi;
 }
 
-.big-orange {
-  height: 70px;
-  width: 300px;
-  padding: 18px 80px;
-  font-size: 17px;
-  border: none;
-  border-radius: 6px;
-  background-color: #f9812b;
+.nav-bar a:hover {
+  background: linear-gradient(to left, yellow, rgb(255, 72, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-bar a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to left, yellow, rgb(255, 72, 0));
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-bar a:hover::after {
+  width: 100%;
+}
+
+.esfera-central {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(to bottom, yellow, rgb(255, 72, 0));
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  top: 25vh;
+  box-shadow: 0 0 50px rgba(255, 119, 0, 0.637);
+}
+
+.ciclista {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 370px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.ciclista:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.wheels {
+  font-family: KrubBold;
+  position: relative;
+  font-size: 15vh;
+  bottom: 25vh;
+  padding-left: 4vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ponto {
+  color:rgb(255, 72, 0) ;
+}
+
+.bicicletas {
+  font-family: KrubLight;
+  letter-spacing: 1vh;
+  position: absolute;
+  top: 80vh;
+  left: 8vh;
+  transform: rotate(-90deg) translateY(-50%);
+  transform-origin: left top;
+  white-space: nowrap;
+  background-color: transparent;
+  color: white; 
+  padding: 10px;
+  z-index: 1000;
+}
+
+.welcome {
+  font-family: KrubBold;
+  font-size: 2.5vh;
+  position: relative;
+  padding-left: 30vh;
+  bottom: 14vh;
+}
+
+.quadrado {
+  font-family: KrubBold;
+  font-size: 2.5vh;
+  position: relative;
+  padding-left: 26vh;
+  bottom: 10.5vh;
+}
+
+.setas {
+  font-size: 7vh;
+  position: relative;
+  text-align: center;
+  letter-spacing: 70vh;
+  padding-left: 65vh;
+}
+
+.version {
+  position: absolute; 
+  top: 20vh;            
+  right: 2vh;          
+  width: 30vh;
+  border: 2px solid white;
+  padding: 3vh;
+  border-image: linear-gradient(to left,rgba(255, 255, 0, 0), yellow, rgb(255, 72, 0)) 1;
+}
+
+.version h2 {
+  font-size: 2vh;
+  font-family: KrubBold;
+  letter-spacing: 1vh;
+  text-align: center;
+  position: relative;
+  right: 2vh;
+}
+
+.version p {
+  text-align: center;
+  background: linear-gradient(to left, yellow, rgb(255, 72, 0));
+}
+
+.gerenciamento {
+  position: absolute;
+  right: 46.8vh;
+  bottom: 50vh;
+  font-family: KrubSemiBold;
+}
+
+.texto {
+  position: absolute;
+  right: 12vh;
+  bottom: 36vh;
+  font-family: KrubSemiBold;
+  letter-spacing: 2px;
+}
+
+.botaoRegistrar {
+  position: absolute;
+  right: 57vh;
+  bottom: 28vh;
+  padding: 1.5vh;
+  width: 17vh;
+  font-family: KrubBold;
+  font-size: 10px;
   color: white;
+  letter-spacing: 2px;
+  background: linear-gradient(to left, yellow, rgb(255, 72, 0));
+  border: none;
   cursor: pointer;
-  font-family: "Inter", sans-serif;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 20px;
 }
 
-.big-orange:hover {
-  background-color: #d56a1f;
-  transform: scale(1.03);
+.rodape {
+  position: relative;
+  top: 5vh;
+  width: 100%;
+  height: 30vh;
+  background-color: rgba(13, 13, 13, 0);
+  box-shadow: 0 0 5vh black;
+}
+
+::-webkit-scrollbar {
+  width: 8px; 
+  height: 12px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, yellow, rgb(255, 72, 0));
+  border-radius: 10px;
+  border: 3px solid #222;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, orange, red);
+}
+
+.informacoes {
+  display: flex;
+  gap: 250px;
+  align-items: center;
+  justify-content: center;
+}
+
+.informacoes p {
+  position: relative;
+  top: 10vh;
+  font-size: 3vh;
+}
+
+.mais {
+  color: rgb(255, 143, 11);
+  font-weight: 800;
+  position: relative;
+  bottom: 6px;
+}
+
+.numero {
+  font-size: 7vh;
+  font-family: KrubBold;
+  position: relative;
+  top: 5px;
+}
+
+.light {
+  font-family: KrubLight;
+  font-weight: 200;
+  position: relative;
+  left: 10px;
+  font-size: 17px;
+  bottom: 15px;
+}
+
+.destaque {
+  font-family: KrubBold;
+  position: absolute;
+  left: 55px;
+  bottom: 2px;
+  color: rgb(255, 143, 11);
+}
+
+.destaque1 {
+  font-family: KrubBold;
+  position: absolute;
+  left: 62px;
+  bottom: 2px;
+  color: rgb(255, 143, 11);
 }
 
 .dropdown-menu-container {
@@ -125,97 +304,104 @@
 }
 
 .dropbtn {
-  all: unset;
-  cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dropbtn img {
-  width: 40px;
-  height: 40px;
+.bar {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, orange, yellow);
+  border-radius: 4px;
+  transition: all 0.4s ease;
 }
+
+.dropbtn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.7);
+}
+
+.dropbtn:hover .bar:nth-child(1) {
+  transform: translateX(4px);
+}
+
+.dropbtn:hover .bar:nth-child(2) {
+  transform: translateX(-4px);
+}
+
+.dropbtn:hover .bar:nth-child(3) {
+  transform: translateX(4px);
+}
+
 
 .dropdown-content {
-  display: none;
   position: absolute;
   right: 0;
-  background-color: #3d3936;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  z-index: 4;
+  top: 100%;
+  min-width: 220px;
+  background: rgba(30, 30, 30, 0.85);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  display: flex;
   flex-direction: column;
+
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-content a {
   color: white;
-  padding: 12px 16px;
+  padding: 14px 20px;
   text-decoration: none;
   display: block;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.6vh;
   transition: background-color 0.2s ease;
-  border-bottom: 2px solid transparent;
 }
 
 .dropdown-content a:not(:last-child) {
-  border-bottom: 2px solid #f9812b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.dropdown-content a:first-child {
-  border-top: 10px solid #f9812b;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.dropdown-content a::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f9bf2b, #f9812b);
+  z-index: -1;
+  transition: left 0.4s ease;
 }
 
-.dropdown-content a:last-child {
-  border-bottom: 10px solid #f9812b;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.dropdown-content a:hover::before {
+  left: 0;
 }
 
 .dropdown-content a:hover {
-  background-color: #2f2c2a;
+  color: #000;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.big-bot {
-  height: 70px;
-  width: 70px;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  background-color: #ffffff;
-  position: relative;
-  align-self: flex-start;
-  top: 60px;
-}
-
-.big-bot img {
-  height: 62px;
-  width: 62px;
-  object-fit: contain;
-  margin: 0;
-  display: block;
-}
-
-.big-bot:hover,
-.big-orange:hover {
-  background-color: #d56a1f;
-  transform: scale(1.03);
-}
-
-.logobike {
-  width: 300px;
-  height: 300px;
-  align-self: flex-end;
-  transform: translateY(-40px);
+.logoChat {
+  position: absolute;
+  right: 39vh;
+  bottom: 23.5vh;
 }

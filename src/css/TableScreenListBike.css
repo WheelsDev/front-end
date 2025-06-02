@@ -1,8 +1,14 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+.pai {
+  padding-top: 5vh;
+}
+
 
 body {
   background-color: #000;
@@ -94,7 +100,7 @@ tbody td:first-child {
   flex-shrink: 0;
   text-align: center;
   font-family: Inter;
-  font-size: 24px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -122,12 +128,14 @@ img {
 
 .search-container {
   margin-top: 20px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
   font-family: "Inter", sans-serif;
   position: relative;
   width: 900px;
 }
+
 
 .search-container input {
   padding: 10px;
@@ -241,21 +249,16 @@ img {
 }
 
 .modal .close-button {
-  background-color: #f9812b;
-  color: white;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  font-size: 18px;
-  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
   cursor: pointer;
+  padding: 0;
+  line-height: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  justify-content: center;
 }
 
 .modal h2 {
@@ -337,8 +340,21 @@ img {
   margin-bottom: 6px;
 }
 
+.modal-button{
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: #F87314;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+
 .logobike2 {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 20px;
 }
