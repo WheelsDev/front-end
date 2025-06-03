@@ -1,11 +1,127 @@
-.form-container {
+.register-page {
+  background-color: #000;
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+#backbutton2 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#backbutton2 img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin-right: 0;
+}
+
+.new-register-page {
+  background-color: #0a0a0a;
+  padding: 30px;
+  border-radius: 15px;
+  width: 600px;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.new-register-header {
+  width: 100%;
+  display: flex;
   justify-content: center;
+  margin-bottom: 25px;
 }
 
 .logo13 {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: auto;
+}
+
+.new-register-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.new-register-input,
+.new-register-input select {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-register-input::placeholder {
+  color: #888;
+}
+
+.new-register-input:focus {
+  outline: none;
+  border-color: #f9812b;
+  box-shadow: 0 0 0 2px rgba(249, 129, 43, 0.3);
+}
+
+.new-register-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); 
+}
+
+.new-register-button {
+  background-color: #f9812b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.new-register-button:hover {
+  background-color: #d56a1f; 
+  transform: translateY(-2px);
+}
+
+.new-register-input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.new-register-input-container button {
+  background-color: #f9812b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 200px; 
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }

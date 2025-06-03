@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import imagemLogo from "../assets/logobike.png";
 import "../css/NewRegister.css";
+import imagem12 from "../assets/seta.png";
 
 function FormularioContrato() {
   const [clientes, setClientes] = useState([]);
@@ -11,6 +13,12 @@ function FormularioContrato() {
     dataRetorno: '',
     valorDeposito: ''
   });
+
+  const navigate = useNavigate();
+
+  const voltarPagina = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     fetch('http://localhost:8080/api/clientes')
@@ -78,29 +86,41 @@ function FormularioContrato() {
   };
 
   return (
-    <div className="form-container">
-    <img className="logo13" src={imagemLogo} alt="Logo" />
-    <form onSubmit={handleSubmit}>
-      <select name="idBicicleta" value={formData.idBicicleta} onChange={handleChange} required>
-        <option value="">Selecione a bicicleta desejada</option>
-        {bicicletas.map(b => (
-          <option key={b.numero} value={b.numero}>{b.nome}</option>
-        ))}
-      </select>
+    <div className="register-page">
+       <button id="backbutton2" onClick={voltarPagina}>
+            <img src={imagem12} alt="seta" title="seta" />
+          </button>
+    <div className="new-register-page">
+      <div className="new-register-header">
+        <img className="logo13" src={imagemLogo} alt="Logo" />
+      </div>
+      <div className="new-register-form-container">
+        <form onSubmit={handleSubmit}>
+          <select name="idBicicleta" value={formData.idBicicleta} onChange={handleChange} required className="new-register-input">
+            <option value="">Selecione a bicicleta desejada</option>
+            {bicicletas.map(b => (
+              <option key={b.numero} value={b.numero}>{b.nome}</option>
+            ))}
+          </select>
 
-      <select name="emailCliente" value={formData.emailCliente} onChange={handleChange} required>
-        <option value="">Cliente</option>
-        {clientes.map(c => (
-          <option key={c.email} value={c.email}>{c.nome} ({c.email})</option>
-        ))}
-      </select>
+          <select name="emailCliente" value={formData.emailCliente} onChange={handleChange} required className="new-register-input">
+            <option value="">Cliente</option>
+            {clientes.map(c => (
+              <option key={c.email} value={c.email}>{c.nome} ({c.email})</option>
+            ))}
+          </select>
+          <div className="new-register-input-container">
+          <input type="date" name="dataRetorno" value={formData.dataRetorno} onChange={handleChange} required className="new-register-input" />
+          <Link to="/clientes">
+          <button>Adicionar Cliente</button>
+          </Link>
+          </div>
+          <input type="number" name="valorDeposito" value={formData.valorDeposito} onChange={handleChange} placeholder="Valor do depósito R$" required className="new-register-input" />
 
-      <input type="date" name="dataRetorno" value={formData.dataRetorno} onChange={handleChange} required />
-
-      <input type="number" name="valorDeposito" value={formData.valorDeposito} onChange={handleChange} placeholder="Valor do depósito R$" required />
-
-      <button type="submit">Registrar</button>
-    </form>
+          <button type="submit" className="new-register-button">Registrar</button>
+        </form>
+      </div>
+    </div>
     </div>
   );
 }

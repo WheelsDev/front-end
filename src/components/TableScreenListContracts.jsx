@@ -5,7 +5,7 @@ import imagem10 from "../assets/lixeira.svg";
 import { Link, useNavigate } from "react-router-dom";
 import imagem11 from "../assets/seta.png";
 
-const TableScreenListCustomers = ({ dados }) => {
+const TableScreenListContracts = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -97,16 +97,20 @@ const TableScreenListCustomers = ({ dados }) => {
           <tbody>
             {displayData && displayData.length > 0 ? (
               displayData.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.cliente}</td>
-                  <td>{item.bicicleta}</td>
-                  <td>{item.data}</td>
-                  <td>{item.dias}</td>
-                  <td>{item.taxa}</td>
-                  <td>{item.deposito}</td>
+                <tr key={item.identificador}>
+                  <td>{item.identificador}</td>
+                  <td>{item.cliente ? item.cliente.nome : 'N/A'}</td>
+                  <td>{item.bicicleta ? item.bicicleta.nome : 'N/A'}</td>
+                  <td>{new Date(item.dataInicioAluguel).toLocaleDateString()}</td>
+                  <td>{item.numeroDias}</td>
+                  <td>{item.bicicleta ? `R$ ${item.bicicleta.diariaTaxaAluguel.toFixed(2)}` : 'N/A'}</td>
+                  <td>{`R$ ${parseFloat(item.valorDeposito).toFixed(2)}`}</td>
                   <td>{item.status}</td>
-                  <td>{item.consultar}</td>
+                  <td>
+                    <button onClick={() => console.log('Consultar/Finalizar contrato:', item.identificador)}>
+                      Detalhes
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (
@@ -167,4 +171,4 @@ const TableScreenListCustomers = ({ dados }) => {
   );
 };
 
-export default TableScreenListCustomers;
+export default TableScreenListContracts;
