@@ -93,13 +93,13 @@
     width: 200px;
     height: 50px;
     border-radius: 15px 15px 15px 0;
-    background-color: #f87314;
+    background: linear-gradient(to right, rgb(255, 153, 0), rgb(255, 119, 0));
   }
   30% {
     border-radius: 20px;
     width: 400px;
     height: 50px;
-    background-color: #f87314;
+    background: linear-gradient(to right, rgb(255, 153, 0), rgb(255, 119, 0));
   }
   100% {
     width: 400px;
@@ -155,7 +155,7 @@
 
 .login-header.valid,
 .login-footer.valid {
-  background-color: #f87314;
+  background: linear-gradient(to right, rgb(255, 153, 0), rgb(255, 119, 0));
 }
 
 .login-header.error,
@@ -208,7 +208,7 @@
 }
 
 .botao-login.valid {
-  background-color: #f87314;
+  background: linear-gradient(to right, rgb(255, 153, 0), rgb(255, 119, 0));
   cursor: pointer;
 }
 

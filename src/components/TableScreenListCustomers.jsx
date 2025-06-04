@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../css/TableScreenListCustomers.css";
-import imagem5 from "../assets/helmet.png";
+import logo from "../assets/logobike.png";
 import imagem10 from "../assets/lixeira.svg";
 import imagem11 from "../assets/seta.png";
 import imagem4 from "../assets/logobike.png";
@@ -82,7 +82,7 @@ const TableScreenListCustomers = ({ dados }) => {
       setEstado('');
     }
   };
-  
+
   const validateFields = () => {
     const newErrors = {};
     if (!nomeCliente.trim()) newErrors.nome = "O nome é obrigatório";
@@ -106,7 +106,7 @@ const TableScreenListCustomers = ({ dados }) => {
       nome: nomeCliente,
       telefone: telefoneCliente,
       email: emailCliente,
-      endereco: `${rua}, ${numeroCasa} - ${bairro}, ${cidade} - ${estado}, CEP: ${cep}` 
+      endereco: `${rua}, ${numeroCasa} - ${bairro}, ${cidade} - ${estado}, CEP: ${cep}`
     };
 
     try {
@@ -117,10 +117,10 @@ const TableScreenListCustomers = ({ dados }) => {
       });
 
       if (!response.ok) {
-         const errorData = await response.json();
-         throw new Error(errorData.message || "Erro ao registrar cliente");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Erro ao registrar cliente");
       }
-      
+
       alert("Cliente registrado com sucesso!");
       closeModal();
     } catch (error) {
@@ -188,9 +188,9 @@ const TableScreenListCustomers = ({ dados }) => {
           <button id="backbutton" onClick={voltarPagina}>
             <img src={imagem11} alt="seta" title="seta" />
           </button>
-          <img className="helmet" src={imagem5} alt="logo" title="logo" />
+          <img className="helmet" src={logo} alt="logo" title="logo" />
           <h1>Lista de Clientes</h1>
-          <button onClick={openModal}>Adicionar Cliente</button> 
+          <button onClick={openModal}>Adicionar Cliente</button>
         </div>
 
         <div className="table-wrapper">
@@ -271,7 +271,7 @@ const TableScreenListCustomers = ({ dados }) => {
             <div className="modal-header-customers">
               <img src={imagem4} alt="Wheels Bike Logo" className="modal-logo-customers" />
               <button className="close-button-customers" onClick={closeModal}>
-                X
+                <img src={imagem11} alt="seta" title="seta" />
               </button>
             </div>
             <div className="modal-content-customers">
@@ -290,7 +290,7 @@ const TableScreenListCustomers = ({ dados }) => {
               {errors.cep && <p className="error-text-customers">{errors.cep}</p>}
               {errors.rua && <p className="error-text-customers">{errors.rua}</p>}
               {errors.numeroCasa && <p className="error-text-customers">{errors.numeroCasa}</p>}
-              
+
               <div className="form-row-customers">
                 <input type="text" placeholder="Bairro" className={`input-bairro-customers ${errors.bairro ? 'input-error' : ''}`} value={bairro} onChange={(e) => setBairro(e.target.value)} />
                 <input type="text" placeholder="Cidade" className={`input-cidade-customers ${errors.cidade ? 'input-error' : ''}`} value={cidade} onChange={(e) => setCidade(e.target.value)} />

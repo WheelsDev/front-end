@@ -1,5 +1,5 @@
 .register-page {
-  background-color: #000;
+  background: linear-gradient(-45deg, #0a0a0a, #1e1e1e, #0f0f0f, #1c1c1c);
   color: white;
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -13,8 +13,8 @@
 
 #backbutton2 {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 50px;
+  left: 50px;
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -29,16 +29,39 @@
   margin-right: 0;
 }
 
+#backbutton2 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#backbutton2 img {
+  height: 28px;
+  width: 28px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#backbutton2:hover img {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
 .new-register-page {
-  background-color: #0a0a0a;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
   padding: 30px;
-  border-radius: 15px;
   width: 600px;
+  height: 520px;
   max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .new-register-header {
@@ -70,6 +93,7 @@
   font-size: 16px;
   width: 100%;
   box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 .new-register-input::placeholder {
@@ -87,10 +111,10 @@
 }
 
 .new-register-button {
-  background-color: #f9812b;
+  background: linear-gradient(90deg, #f9bf2b, #f9812b);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   padding: 12px 15px;
   font-size: 18px;
   font-weight: bold;
@@ -112,10 +136,10 @@
 }
 
 .new-register-input-container button {
-  background-color: #f9812b;
+  background: linear-gradient(to left, #f9bf2b, #f9812b);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   padding: 12px 15px;
   font-size: 18px;
   font-weight: bold;

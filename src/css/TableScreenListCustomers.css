@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #000;
+  background: linear-gradient(-45deg, #0a0a0a, #1e1e1e, #0f0f0f, #1c1c1c);
   color: white;
   font-family: "Inter", sans-serif;
 }
@@ -89,7 +89,7 @@ tbody td:first-child {
   color: white;
   border: none;
   border-radius: 15px;
-  background-color: #f9812b;
+  background: linear-gradient(to right, rgb(255, 153, 0), rgb(255, 119, 0));
   width: 259px;
   height: 55px;
   flex-direction: column;
@@ -242,7 +242,11 @@ img {
 }
 
 .modal-customers {
-  background-color: #0a0a0a;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   width: 600px;
@@ -269,25 +273,25 @@ img {
 }
 
 .close-button-customers {
-  background-color: #f9812b;
-  color: white;
+  background: none;
   border: none;
-  border-radius: 50%;
+}
+
+.close-button-customers img {
   width: 35px;
   height: 35px;
-  font-size: 18px;
-  font-weight: bold;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
   align-items: center;
   position: absolute;
   top: 15px;
   right: 15px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.close-button-customers:hover {
-  background-color: #d56a1f;
+.close-button-customers:hover img {
+  opacity: 1;
+  transform: translateX(-5px);
 }
 
 .modal-content-customers {
@@ -326,9 +330,9 @@ img {
 
 .input-telefone-customers {
   width: calc(40% - 7.5px);
-  background-color: #f9812b !important;
+  background: linear-gradient(to right, orange, yellow) !important;
   color: #fff !important;
-  border-color: #f9812b !important;
+  border-color: #f9812b;
   font-weight: bold;
 }
 .input-telefone-customers::placeholder {
@@ -347,7 +351,7 @@ img {
 
 .input-cep-customers {
   width: calc(30% - 10px);
-  background-color: #f9812b !important;
+  background: linear-gradient(to right, orange, yellow) !important;
   color: #fff !important;
   border-color: #f9812b !important;
   font-weight: bold;
@@ -365,7 +369,7 @@ img {
 
 .input-estado-customers {
   width: calc(40% - 7.5px);
-  background-color: #f9812b !important;
+  background: linear-gradient(to right, rgb(255, 145, 0), rgb(255, 196, 0)) !important;
   color: #fff !important;
   border-color: #f9812b !important;
   font-weight: bold;
@@ -380,7 +384,7 @@ img {
 }
 
 .register-button-customers {
-  background-color: #f9812b;
+  background: linear-gradient(to right, rgb(255, 145, 0), rgb(255, 196, 0));
   color: white;
   border: none;
   border-radius: 10px;
@@ -396,4 +400,3 @@ img {
 .register-button-customers:hover {
   background-color: #d56a1f;
 }
-

@@ -268,10 +268,10 @@ const TableScreenListBike = ({ dados }) => {
           <div className="modal">
             <div className="modal-button">
               <button className="close-button" onClick={closeModal}>
-                X
+                <img src={imagem11} alt="seta" title="seta" />
               </button>
             </div>
-            <img src={imagem4} alt="logo" title="logo" />
+            <img className="logo" src={imagem4} alt="logo" title="logo" />
 
             <input
               type="text"
