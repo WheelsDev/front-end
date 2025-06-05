@@ -11,6 +11,8 @@ import TableDBBike from "./components/TableDBBike";
 import TableDBCustomers from "./components/TableDBCustomers";
 import TableDBContracts from "./components/TableDBContracts";
 import NewRegister from "./components/NewRegister";
+import ConcludeContractScreen from "./components/ConcludeContractScreen";
+
 
 function ProtectedRoute({ children, loggedIn }) {
   return loggedIn ? children : <Navigate to="/" />;
@@ -70,6 +72,14 @@ function App() {
           element={
             <ProtectedRoute loggedIn={loggedIn}>
               <TableDBCustomers />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/concluir-contrato/:contratoId"
+          element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <ConcludeContractScreen />
             </ProtectedRoute>
           }
         />

@@ -1,0 +1,177 @@
+.conclude-contract-container {
+  background: linear-gradient(-45deg, #0a0a0a, #1e1e1e, #0f0f0f, #1c1c1c);
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.back-button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.back-button img {
+  height: 28px;
+  width: 28px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover img {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 25px;
+  width: 600px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 15px;
+}
+
+.input-group {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.date-input,
+.number-input {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.date-input:focus,
+.number-input:focus {
+  outline: none;
+  border-color: #f9812b;
+  box-shadow: 0 0 0 2px rgba(249, 129, 43, 0.3);
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #f9812b;
+  cursor: pointer;
+}
+
+.contract-info {
+  display: flex;
+  justify-content: space-between;
+  color: #FFFFFF;
+  font-size: 13px;
+  width: 100%;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.contract-info > div {
+  flex: 1;
+  padding: 0 8px;
+  min-width: 100px;
+}
+
+.contract-info > div br {
+  margin-bottom: 3px;
+}
+
+.total-value {
+  margin-top: 12px;
+  text-align: center;
+  color: #f9812b;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.orange-button {
+  background: linear-gradient(90deg, #f9bf2b, #f9812b);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1;
+  font-family: "Inter", sans-serif;
+}
+
+.orange-button:hover {
+  background: linear-gradient(to left, #f9bf2b, #f9812b);
+  transform: translateY(-2px);
+} 

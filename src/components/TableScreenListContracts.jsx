@@ -17,6 +17,10 @@ const TableScreenListContracts = ({ dados }) => {
     navigate(-1);
   };
 
+  const handleDetalhesClick = (contrato) => {
+    navigate(`/concluir-contrato/${contrato.identificador}`, { state: { contratoData: contrato } });
+  };
+
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -111,7 +115,10 @@ const TableScreenListContracts = ({ dados }) => {
                     </td>
                     <td>{item.status}</td>
                     <td>
-                      <button className="detalhes" onClick={() => console.log('Consultar/Finalizar contrato:', item.identificador)}>
+                      <button 
+                        className="detalhes" 
+                        onClick={() => handleDetalhesClick(item)}
+                      >
                         Detalhes
                       </button>
                     </td>
