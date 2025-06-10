@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: sora;
+  src: url(../fonts/Sora-VariableFont_wght.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +12,17 @@
 
 .pai {
   padding-top: 5vh;
+  background-image: url(../assets/fundo-tabelas.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
 body {
   background: linear-gradient(-45deg, #0a0a0a, #1e1e1e, #0f0f0f, #1c1c1c);
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
 }
 
 .tabela-container {
@@ -126,7 +135,7 @@ tbody td:first-child {
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
   position: relative;
   width: 900px;
 }
@@ -138,7 +147,7 @@ tbody td:first-child {
   border: 1px solid #ccc;
   border-radius: 10px 0 0 10px;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
   height: 40px;
 }
 
@@ -239,6 +248,7 @@ tbody td:first-child {
   -webkit-backdrop-filter: blur(10px); 
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
+  font-family: sora;
   padding: 20px;
   border-radius: 8px;
   position: relative;
@@ -261,7 +271,7 @@ tbody td:first-child {
   background-color: #333;
   color: white;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
   font-weight: bold;
 }
 
@@ -272,7 +282,7 @@ tbody td:first-child {
 
 .modal input[type="text"]::placeholder {
   color: #aaa;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
 }
 
 .modal-select {
@@ -291,7 +301,7 @@ tbody td:first-child {
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px 12px;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
 }
 
 .modal-select:focus {
@@ -305,23 +315,26 @@ tbody td:first-child {
 }
 
 .modal .register-button {
-  background-color: #F87314;
+  background: linear-gradient(90deg, #f9bf2b, #f9812b);
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 13px;
+  font-family: 'Sora';
+  font-weight: 500;
   cursor: pointer;
   display: block;
   width: 40%;
   font-size: 1rem;
-}
-
-.modal .register-button:hover {
-  background-color: #d45e0a;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.3s ease;
 }
 
 .modal .logo{
   height: 120px;
+  width: 120px;
   margin-bottom: 20px;
 }
 

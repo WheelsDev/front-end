@@ -19,6 +19,8 @@ const TableScreenListBike = ({ dados }) => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+  const userType = localStorage.getItem("userType");
+
   const voltarPagina = () => {
     navigate(-1);
     setIsSearchActive(false);
@@ -172,7 +174,9 @@ const TableScreenListBike = ({ dados }) => {
           <img className="logobike2" src={imagem4} alt="logo" title="logo" />
           <h1>Lista de Bicicletas</h1>
           <div className="botoes-header">
-            <button onClick={openModal}>Adicionar Bicicleta</button>
+            {userType !== "RECEPCIONISTA" && (
+              <button onClick={openModal}>Adicionar Bicicleta</button>
+            )}
           </div>
         </div>
 

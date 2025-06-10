@@ -1,3 +1,8 @@
+@font-face {
+  font-family: sora;
+  src: url(../fonts/Sora-VariableFont_wght.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +16,7 @@
 body {
   background: linear-gradient(-45deg, #0a0a0a, #1e1e1e, #0f0f0f, #1c1c1c);
   color: white;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
 }
 
 .tabela-container {
@@ -83,6 +88,19 @@ thead th {
 
 tbody td {
   border-right: 1px solid white;
+  text-align: center;
+}
+
+.id-col {
+  font-size: 10px;
+}
+
+.data-col {
+  font-size: 12px;
+}
+
+.status-col {
+  font-size: 12px;
 }
 
 thead th:last-child,
@@ -112,7 +130,7 @@ tbody td:first-child {
   width: 100px;
   height: 25px;
   flex-direction: column;
-  font-family: Inter;
+  font-family: sora;
   font-size: 10px;
   font-style: normal;
   font-weight: 600;
@@ -144,7 +162,7 @@ img {
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
   position: relative;
   width: 900px;
 }
@@ -155,7 +173,7 @@ img {
   border: 1px solid #ccc;
   border-radius: 10px 0 0 10px;
   font-size: 14px;
-  font-family: "Inter", sans-serif;
+  font-family: sora;
   height: 40px;
 }
 

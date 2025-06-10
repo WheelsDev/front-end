@@ -311,7 +311,7 @@
 .destaque {
   font-family: KrubBold;
   position: absolute;
-  left: 62px;
+  left: 63px;
   bottom: 2px;
   color: rgb(255, 143, 11);
 }
@@ -320,6 +320,14 @@
   font-family: KrubBold;
   position: absolute;
   left: 62px;
+  bottom: 2px;
+  color: rgb(255, 143, 11);
+}
+
+.destaque2 {
+  font-family: KrubBold;
+  position: absolute;
+  left: 57px;
   bottom: 2px;
   color: rgb(255, 143, 11);
 }
@@ -341,35 +349,33 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 40px;
-  height: 30px;
+  width: 30px;
+  height: 22px; 
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0; 
 }
 
 .bar {
-  height: 4px;
+  display: block; 
+  height: 3px;    
   width: 100%;
-  background: linear-gradient(to right, orange, yellow);
-  border-radius: 4px;
-  transition: all 0.4s ease;
+  background: linear-gradient(to right, #FF8C00, #FFA500);
+  border-radius: 3px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.dropbtn:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.7);
+.dropdown:hover .dropbtn .bar:nth-child(2) {
+  opacity: 0;
 }
 
-.dropbtn:hover .bar:nth-child(1) {
-  transform: translateX(4px);
+.dropdown:hover .dropbtn .bar:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg); 
 }
 
-.dropbtn:hover .bar:nth-child(2) {
-  transform: translateX(-4px);
-}
-
-.dropbtn:hover .bar:nth-child(3) {
-  transform: translateX(4px);
+.dropdown:hover .dropbtn .bar:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
 }
 
 
@@ -383,10 +389,8 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
-
   opacity: 0;
   transform: translateY(-15px);
   pointer-events: none;

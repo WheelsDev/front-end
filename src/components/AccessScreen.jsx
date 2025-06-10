@@ -11,6 +11,7 @@ function AccessScreen({ onLoginSuccess }) {
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,18 +40,33 @@ function AccessScreen({ onLoginSuccess }) {
     }, 1000);
   };
 
-  const handleLogin = () => {
-    if (password === "123" && validateEmail(email)) {
-      console.log("Login successful");
-      onLoginSuccess();
-    } else {
-      console.log("Login failed");
+  const handleLogin = async () => {
+    setLoading(true);
+    setLoginError(false);
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/usuarios/autenticação?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(password)}`
+      );
+      if (!response.ok) {
+        throw new Error("Erro na requisição");
+      }
+      const user = await response.json();
+      if (user && user.email) {
+        localStorage.setItem("userType", user.tipo);
+        localStorage.setItem("userEmail", user.email);
+        onLoginSuccess();
+      } else {
+        setLoginError(true);
+      }
+    } catch (error) {
       setLoginError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <section className="AccessScreen">
+    <section className={`AccessScreen ${isFormValid ? 'valid' : ''}`}>
       <div className="esfera1"></div>
       <p className="title">Sistema Wheels</p>
       <p className="copyright">@2025 - Copyright RTGJ</p>
@@ -92,13 +108,11 @@ function AccessScreen({ onLoginSuccess }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button
-                className={`botao-login ${
-                  loginError ? "error" : isFormValid ? "valid" : ""
-                }`}
+                className={`botao-login ${loginError ? "error" : isFormValid ? "valid" : ""}`}
                 onClick={handleLogin}
-                disabled={!isFormValid}
+                disabled={!isFormValid || loading}
               >
-                Login
+                {loading ? "Entrando..." : "Login"}
               </button>
             </div>
             <div

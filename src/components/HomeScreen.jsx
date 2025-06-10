@@ -151,7 +151,7 @@ function HomeScreen() {
                 <span className="numero">{estatisticas.clientes}</span>
                 <span className="light"> CLIENTES</span>
                 <br></br>
-                <span className="destaque"> NOVOS</span>
+                <span className="destaque2"> NOVOS</span>
               </p>
               <p>
                 <span className="mais">+ </span>

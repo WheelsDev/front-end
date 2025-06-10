@@ -13,6 +13,10 @@ import TableDBContracts from "./components/TableDBContracts";
 import NewRegister from "./components/NewRegister";
 import ConcludeContractScreen from "./components/ConcludeContractScreen";
 
+import PagamentoSucesso from "./components/PagamentoSucesso";
+import PagamentoFalha from "./components/PagamentoFalha";
+import PagamentoPendente from "./components/PagamentoPendente";
+
 
 function ProtectedRoute({ children, loggedIn }) {
   return loggedIn ? children : <Navigate to="/" />;
@@ -83,6 +87,11 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/pagamento/sucesso" element={<PagamentoSucesso />} />
+        <Route path="/pagamento/falha" element={<PagamentoFalha />} />
+        <Route path="/pagamento/pendente" element={<PagamentoPendente />} />
+
+
         <Route path="*" element={<Navigate to={loggedIn ? "/home" : "/"} />} />
       </Routes>
     </Router>

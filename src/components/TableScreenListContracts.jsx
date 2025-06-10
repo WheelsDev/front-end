@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/TableScreenListContracts.css";
 import logo from "../assets/logobike.png";
 import imagem10 from "../assets/lixeira.svg";
@@ -9,16 +9,26 @@ const TableScreenListContracts = ({ dados }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [contratosAtualizados, setContratosAtualizados] = useState(dados || []);
   const MIN_ROWS = 20;
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("Dados recebidos na tabela:", dados);
+    setContratosAtualizados(dados || []);
+  }, [dados]);
 
   const voltarPagina = () => {
     navigate(-1);
   };
 
-  const handleDetalhesClick = (contrato) => {
-    navigate(`/concluir-contrato/${contrato.identificador}`, { state: { contratoData: contrato } });
+  const handleButtonClick = (contrato) => {
+    if (contrato.status === "FINALIZADO") {
+      console.log("Botão Consultar clicado para o contrato:", contrato.identificador);
+    } else {
+      navigate(`/concluir-contrato/${contrato.identificador}`, { state: { contratoData: contrato } });
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -28,18 +38,17 @@ const TableScreenListContracts = ({ dados }) => {
   const handleSearch = () => {
     if (searchTerm.trim() === "") {
       setIsSearchActive(false);
+      setFilteredData([]);
       return;
     }
 
     const lowercasedSearch = searchTerm.toLowerCase();
 
-    const filtered = dados.filter(
+    const filtered = (contratosAtualizados || []).filter(
       (item) =>
-        item.id.toString().includes(lowercasedSearch) ||
-        item.nome.toLowerCase().includes(lowercasedSearch) ||
-        item.endereço.toLowerCase().includes(lowercasedSearch) ||
-        item.telefone.toLowerCase().includes(lowercasedSearch) ||
-        item.email.toLowerCase().includes(lowercasedSearch)
+        item.identificador?.toLowerCase().includes(lowercasedSearch) ||
+        (item.cliente?.nome || '').toLowerCase().includes(lowercasedSearch) ||
+        (item.bicicleta?.nome || '').toLowerCase().includes(lowercasedSearch)
     );
 
     setFilteredData(filtered);
@@ -54,19 +63,20 @@ const TableScreenListContracts = ({ dados }) => {
 
   const clearSearch = () => {
     setSearchTerm("");
+    setFilteredData([]);
     setIsSearchActive(false);
   };
 
-  const displayData = isSearchActive ? filteredData : dados;
+  const displayData = isSearchActive ? filteredData : (contratosAtualizados || []);
 
   return (
     <div className="pai">
-      <div class="dropdown-menu-container">
-        <div class="dropdown">
-          <div class="dropbtn">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+      <div className="dropdown-menu-container">
+        <div className="dropdown">
+          <div className="dropbtn">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
           </div>
           <div className="dropdown-content">
             <Link to="/home">Início</Link>
@@ -95,31 +105,39 @@ const TableScreenListContracts = ({ dados }) => {
                 <th>Taxa</th>
                 <th>Depósito</th>
                 <th>Status</th>
-                <th>Consultar / Finalizar</th>
+                <th>Ação</th>
               </tr>
             </thead>
             <tbody>
               {displayData && displayData.length > 0 ? (
                 displayData.map((item) => (
                   <tr key={item.identificador}>
-                    <td>{item.identificador}</td>
-                    <td>{item.cliente ? item.cliente.nome : 'N/A'}</td>
-                    <td>{item.bicicleta ? item.bicicleta.nome : 'N/A'}</td>
-                    <td>{new Date(item.dataInicial).toLocaleDateString()} até {new Date(item.dataRetorno).toLocaleDateString()}</td>
-                    <td>{item.numeroDias}</td>
-                    <td>{item.bicicleta ? `R$ ${item.bicicleta.diariaTaxaAluguel.toFixed(2)}` : 'N/A'}</td>
+                    <td className="id-col">{item.identificador}</td>
+                    <td>{item.cliente?.nome || 'N/A'}</td>
+                    <td>{item.bicicleta?.nome || 'N/A'}</td>
+                    <td className="data-col">
+                      {item.dataInicial ? new Date(item.dataInicial + 'T12:00:00').toLocaleDateString('pt-BR') : 'N/A'} até{" "}
+                      {item.dataRetorno ? new Date(item.dataRetorno + 'T12:00:00').toLocaleDateString('pt-BR') : 'N/A'}
+
+                    </td>
+                    <td>{item.numeroDias || 'N/A'}</td>
                     <td>
-                      {item.bicicleta && !isNaN(parseFloat(item.bicicleta.deposito))
+                      {item.bicicleta?.diariaTaxaAluguel
+                        ? `R$ ${parseFloat(item.bicicleta.diariaTaxaAluguel).toFixed(2)}`
+                        : 'N/A'}
+                    </td>
+                    <td>
+                      {item.bicicleta?.deposito
                         ? `R$ ${parseFloat(item.bicicleta.deposito).toFixed(2)}`
                         : "R$ 0.00"}
                     </td>
-                    <td>{item.status}</td>
+                    <td className="status-col">{item.status || 'N/A'}</td>
                     <td>
-                      <button 
-                        className="detalhes" 
-                        onClick={() => handleDetalhesClick(item)}
+                      <button
+                        className="detalhes"
+                        onClick={() => handleButtonClick(item)}
                       >
-                        Detalhes
+                        {item.status === "FINALIZADO" ? "Consultar" : "Finalizar"}
                       </button>
                     </td>
                   </tr>
@@ -128,25 +146,17 @@ const TableScreenListContracts = ({ dados }) => {
                 <tr>
                   <td colSpan="9" className="text-center">
                     {isSearchActive
-                      ? "Nenhum resultado encontrado"
-                      : "Nenhum dado encontrado"}
+                      ? "Nenhum resultado encontrado para sua busca."
+                      : "Nenhum contrato encontrado."}
                   </td>
                 </tr>
               )}
               {!isSearchActive &&
                 Array.from({
-                  length: Math.max(0, MIN_ROWS - (dados ? dados.length : 0)),
+                  length: Math.max(0, MIN_ROWS - (displayData ? displayData.length : 0)),
                 }).map((_, index) => (
                   <tr key={`empty-${index}`}>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td colSpan="9">&nbsp;</td>
                   </tr>
                 ))}
             </tbody>
@@ -156,7 +166,7 @@ const TableScreenListContracts = ({ dados }) => {
           <input
             type="text"
             id="search-input"
-            placeholder="Buscar..."
+            placeholder="Buscar por ID, Cliente ou Bicicleta..."
             value={searchTerm}
             onChange={handleSearchChange}
             onKeyPress={handleKeyPress}
