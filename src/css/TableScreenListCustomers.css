@@ -169,7 +169,7 @@ img {
   transform: none;
 }
 
-#clear-button {
+#clear-button5 {
   background-color: #f44336;
   border-radius: 10px;
   width: 50px;
@@ -178,11 +178,11 @@ img {
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin: 0;
   line-height: 40px;
+  margin-left: 20px;
 }
 
-#clear-button:hover {
+#clear-button5:hover {
   background-color: #d32f2f;
 }
 

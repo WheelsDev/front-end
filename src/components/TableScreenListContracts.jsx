@@ -25,7 +25,7 @@ const TableScreenListContracts = ({ dados }) => {
 
   const handleButtonClick = (contrato) => {
     if (contrato.status === "FINALIZADO") {
-      console.log("Botão Consultar clicado para o contrato:", contrato.identificador);
+      window.open(`http://localhost:8080/api/contratos/${contrato.identificador}/pdf`, '_blank');
     } else {
       navigate(`/concluir-contrato/${contrato.identificador}`, { state: { contratoData: contrato } });
     }

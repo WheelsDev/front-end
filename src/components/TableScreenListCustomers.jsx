@@ -250,7 +250,7 @@ const TableScreenListCustomers = ({ dados }) => {
             Buscar
           </button>
           {isSearchActive && (
-            <button id="clear-button" onClick={clearSearch}>
+            <button id="clear-button5" onClick={clearSearch}>
               <img className="trash" src={imagem10} alt="lixeira" title="lixeira" />
             </button>
           )}

@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: OswaldSemi;
   src: url(../fonts/Oswald-SemiBold.ttf);
@@ -345,6 +344,18 @@
   display: inline-block;
 }
 
+.dropdown::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100%;
+  height: 20px; /* igual ou maior que o gap desejado */
+  pointer-events: auto;
+  /* z-index menor que o menu, maior que o fundo */
+}
+
 .dropbtn {
   display: flex;
   flex-direction: column;
@@ -382,7 +393,7 @@
 .dropdown-content {
   position: absolute;
   right: 0;
-  top: 100%;
+  top: calc(100% + 15px);
   min-width: 220px;
   background: rgba(30, 30, 30, 0.85);
   border-radius: 12px;
