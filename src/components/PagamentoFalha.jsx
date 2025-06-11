@@ -15,7 +15,6 @@ function PagamentoFalha() {
         <div className="payment-info">
           <p>ID da Tentativa: {searchParams.get('payment_id')}</p>
         </div>
-        {/* O link volta para a tela de concluir contrato para tentar de novo */}
         <Link to={`/concluir-contrato/${contratoId}`} className="home-button">Tentar Novamente</Link>
       </div>
     </div>

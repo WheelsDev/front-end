@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/TableScreenListBike.css";
 import imagem4 from "../assets/logobike.png";
 import imagem10 from "../assets/lixeira.svg";
@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import imagem11 from "../assets/seta.png";
 
 const TableScreenListBike = ({ dados }) => {
+  const [bikes, setBikes] = useState(dados || []);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -76,7 +77,7 @@ const TableScreenListBike = ({ dados }) => {
     setIsSearchActive(false);
   };
 
-  const displayData = isSearchActive ? filteredData : dados;
+  const displayData = isSearchActive ? filteredData : bikes;
   const MIN_ROWS = 20;
 
   const openModal = () => setIsModalOpen(true);
@@ -135,6 +136,11 @@ const TableScreenListBike = ({ dados }) => {
       const data = await response.json();
       alert("Bicicleta registrada com sucesso!");
       closeModal();
+
+      const res = await fetch("http://localhost:8080/api/bicicletas");
+      const novasBikes = await res.json();
+      setBikes(novasBikes);
+
     } catch (error) {
       alert("Erro ao registrar bicicleta. Tente novamente.");
     }
@@ -148,6 +154,9 @@ const TableScreenListBike = ({ dados }) => {
     );
   };
 
+  useEffect(() => {
+    setBikes(dados || []);
+  }, [dados]);
 
   return (
     <div className="pai">

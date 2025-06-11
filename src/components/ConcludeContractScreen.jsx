@@ -47,7 +47,6 @@ function ConcludeContractScreen() {
       const dataEntrega = new Date(formData.dataEntrega);
       const dataPrevista = new Date(contratoData.dataRetorno);
 
-      // Ajusta as datas para meia-noite para evitar problemas com horário
       dataEntrega.setHours(0, 0, 0, 0);
       dataPrevista.setHours(0, 0, 0, 0);
 

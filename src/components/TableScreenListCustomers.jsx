@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/TableScreenListCustomers.css";
 import logo from "../assets/logobike.png";
 import imagem10 from "../assets/lixeira.svg";
@@ -23,6 +23,8 @@ const TableScreenListCustomers = ({ dados }) => {
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
   const [errors, setErrors] = useState({});
+
+  const [clientes, setClientes] = useState(dados || []);
 
   const navigate = useNavigate();
 
@@ -123,6 +125,11 @@ const TableScreenListCustomers = ({ dados }) => {
 
       alert("Cliente registrado com sucesso!");
       closeModal();
+
+      const res = await fetch("http://localhost:8080/api/clientes");
+      const novosClientes = await res.json();
+      setClientes(novosClientes);
+
     } catch (error) {
       alert(`Erro ao registrar cliente: ${error.message}`);
       console.error("Erro ao registrar cliente:", error);
@@ -164,7 +171,11 @@ const TableScreenListCustomers = ({ dados }) => {
     setIsSearchActive(false);
   };
 
-  const displayData = isSearchActive ? filteredData : dados;
+  const displayData = isSearchActive ? filteredData : clientes;
+
+  useEffect(() => {
+    setClientes(dados || []);
+  }, [dados]);
 
   return (
     <div className="pai">
